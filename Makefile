@@ -18,20 +18,23 @@ dotfiles:
 	cp bash_profile ~/.bash_profile	
 	cp ~/.gitconfig ~/.gitconfig_$(DATE)
 	cp gitconfig ~/.gitconfig
-	cp ~/.tmux.conf ~/.tmux.conf_$(DATE)
+	cp tmux.conf ~/.tmux.conf_$(DATE)
 	cp tmux.conf ~/.tmux.conf
 	mkdir -p ~/.ngrok2
-	cp ~/.ngrok2/ngrok.yml_$(DATE)
+	if [ -a ~/.ngrok2/ngrok.yml ] ; then \
+		cp ~/.ngrok2/ngrok.yml ~/.ngrok2/ngrok.yml_$(DATE) ; \
+	fi ;
 	cp ngrok.yml ~/.ngrok2/
-	if [ -a ~/.vimrc ] ; \
-		then cp ~/.vimrc ~/.vimrc_$(DATE) ; \
+	if [ -a ~/.vimrc ] ; then \
+		cp ~/.vimrc ~/.vimrc_$(DATE) ; \
 	fi;
-	mkdir -p ~/.vim
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim ;
 	cp vimrc ~/.vim/
 	ln -sf ~/.vim/vimrc ~/.vimrc
 
 all:
 	@echo "Making all."
-	brew
-	dotfiles
+	# THESE DON'T WORK:
+	# brew
+	# dotfiles
 
