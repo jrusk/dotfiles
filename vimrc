@@ -15,14 +15,19 @@ Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'wincent/command-t'
 Plug 'tpope/vim-fugitive'
+Plug 'chr4/nginx.vim'
 
 " Python
 Plug 'nvie/vim-flake8'
+" Jinja2
+Plug 'Glench/Vim-Jinja2-Syntax'
 
 " Javascript
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'leshill/vim-json'
+
+Plug 'mustache/vim-mustache-handlebars'
 
 " Initialize plugin system
 call plug#end()
@@ -36,6 +41,9 @@ filetype plugin indent on
 if !exists("g:syntax_on")
     syntax enable
 endif
+
+" Highlight searches
+set hlsearch
 
 colorscheme monokai
 " colorscheme base16-default-dark
@@ -52,8 +60,10 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 
 map <C-n> :NERDTreeToggle<CR>
 
+let NERDTreeIgnore = ['\.pyc$']
+
 " Python
-autocmd BufNewFile,BufRead *.py
+autocmd BufNewFile,BufRead *.py,*.hbs
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
@@ -62,10 +72,10 @@ autocmd BufNewFile,BufRead *.py
     \ set autoindent |
     \ set fileformat=unix
 
-" Javascript, html, css
-autocmd BufNewFile,BufRead *.js,*.html,*.css
+autocmd BufNewFile,BufRead *.js,*.html,*.css,*.jinja,*.jinja2
     \ set tabstop=2 |
     \ set softtabstop=2 |
+    \ set expandtab |
     \ set shiftwidth=2
 
 " Javascript
