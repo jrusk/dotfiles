@@ -29,6 +29,8 @@ Plug 'leshill/vim-json'
 
 Plug 'mustache/vim-mustache-handlebars'
 
+Plug 'posva/vim-vue'
+
 " Initialize plugin system
 call plug#end()
 
@@ -63,7 +65,7 @@ map <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$']
 
 " Python
-autocmd BufNewFile,BufRead *.py,*.hbs
+autocmd BufNewFile,BufRead *.py,*.hbs,*.md
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
@@ -72,7 +74,7 @@ autocmd BufNewFile,BufRead *.py,*.hbs
     \ set autoindent |
     \ set fileformat=unix
 
-autocmd BufNewFile,BufRead *.js,*.html,*.css,*.jinja,*.jinja2
+autocmd BufNewFile,BufRead *.js,*.html,*.css,*.jinja,*.jinja2,*.yaml,*.yml,*.json
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set expandtab |
