@@ -3,7 +3,7 @@ DIR="${HOME}/dotfiles"
 .PHONY: info
 
 test:
-ifeq (git status -s,)
+ifeq ($$(git status -s),)
 	echo "No problem, continue running..."
 else
 	$(error First git commit before running build)
