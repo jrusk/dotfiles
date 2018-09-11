@@ -2,11 +2,9 @@ DIR="${HOME}/dotfiles"
 
 .PHONY: info
 
-GIT_STATUS := $(git status -s)
-
 test:
-ifeq ($(GIT_STATUS), '')
-	echo GIT_STATUS is '$(GIT_STATUS)'
+ifneq ($(shell git status -s),)
+	$(error First git commit before running build)
 else
 	echo "No problem, continue running..."
 endif
