@@ -6,7 +6,7 @@ test:
 ifneq ($(shell git status -s),)
 	$(error First git commit before running build)
 else
-	echo "No problem, continue running..."
+	@echo "No problem, continue running..."
 endif
 
 
