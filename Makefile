@@ -6,9 +6,9 @@ GIT_STATUS := $(git status -s)
 
 test:
 ifeq ($(GIT_STATUS),)
-	echo "No problem, continue running..."
-else
 	echo GIT_STATUS is $(GIT_STATUS)
+else
+	echo "No problem, continue running..."
 endif
 
 
