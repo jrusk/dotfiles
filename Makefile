@@ -5,7 +5,7 @@ DIR="${HOME}/dotfiles"
 GIT_STATUS := $(git status -s)
 
 test:
-ifeq ($(GIT_STATUS),)
+ifneq ($(GIT_STATUS),)
 	echo GIT_STATUS is '$(GIT_STATUS)'
 else
 	echo "No problem, continue running..."
