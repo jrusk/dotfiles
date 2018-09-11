@@ -2,11 +2,13 @@ DIR="${HOME}/dotfiles"
 
 .PHONY: info
 
+GIT_STATUS := $(git status -s)
+
 test:
-ifeq ($$(git status -s),)
+ifeq ($(GIT_STATUS),)
 	echo "No problem, continue running..."
 else
-	echo $$(git status -s)
+	echo GIT_STATUS is $(GIT_STATUS)
 endif
 
 
