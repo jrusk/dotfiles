@@ -1,12 +1,26 @@
 DIR="${HOME}/dotfiles"
 
+NAME	:= "jrusk/frontnumber-maint"
+TAG	:= $(shell cat VERSION)
+IMG	:= "${NAME}:${TAG}"
+LATEST	:= "${NAME}:latest"
+
 .PHONY: info
 
 test:
+ifeq ($(TAG),)
+	$(error Provide VERSION file)
+else
+	@echo "docker build -t ${IMG} ."
+	@echo "docker tag ${IMG} ${LATEST}"
+endif
+
+testold:
 ifneq ($(shell git status -s),)
 	$(error First git commit before running build)
 else
-	@echo "No problem, continue running..."
+	@echo "${IMG}"
+	@echo "${IMG} ${LATEST}"
 endif
 
 
