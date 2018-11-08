@@ -26,12 +26,15 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 " Javascript
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-"Plug 'leshill/vim-json'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'posva/vim-vue'
 
 " JSON
-Plug 'elzr/vim-json'
+" Plug 'leshill/vim-json'
+" Plug 'elzr/vim-json'
+
+" Auto pretty code: https://github.com/prettier/vim-prettier                                                                                         
+Plug 'prettier/vim-prettier'
 
 " Initialize plugin system
 call plug#end()
@@ -86,3 +89,5 @@ autocmd BufNewFile,BufRead *.js,*.html,*.css,*.jinja,*.jinja2,*.yaml,*.yml,*.xml
 " Javascript
 let g:jsx_ext_required = 0
 
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue Prettier
