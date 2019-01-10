@@ -8,10 +8,10 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'vim-scripts/Relaxed-Green'
 Plug 'kien/ctrlp.vim'
-"Plug 'crusoexia/vim-monokai'
-"Plug 'altercation/vim-colors-solarized'
-"Plug 'chriskempson/base16-vim'
-"Plug 'jnurmine/Zenburn'
+Plug 'crusoexia/vim-monokai'
+Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
+Plug 'jnurmine/Zenburn'
 Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'wincent/command-t'
@@ -29,12 +29,22 @@ Plug 'mxw/vim-jsx'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'posva/vim-vue'
 
+" GraphQL
+Plug 'jparise/vim-graphql'
+
 " JSON
 " Plug 'leshill/vim-json'
 " Plug 'elzr/vim-json'
 
 " Auto pretty code: https://github.com/prettier/vim-prettier                                                                                         
 Plug 'prettier/vim-prettier'
+
+" Ultisnips
+Plug 'SirVer/ultisnips'
+
+" React code snippets
+Plug 'epilande/vim-react-snippets'
+" Plug 'mlaursen/vim-react-snippets'
 
 " Initialize plugin system
 call plug#end()
@@ -52,12 +62,12 @@ endif
 " Highlight searches
 set hlsearch
 
-" colorscheme monokai
+colorscheme monokai
 " colorscheme base16-default-dark
 " colors zenburn
 " set background=dark
 " colorscheme solarized
-colorscheme relaxedgreen
+"colorscheme relaxedgreen
 
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
@@ -80,7 +90,7 @@ autocmd BufNewFile,BufRead *.py,*.hbs,*.md
     \ set autoindent |
     \ set fileformat=unix
 
-autocmd BufNewFile,BufRead *.js,*.html,*.css,*.jinja,*.jinja2,*.yaml,*.yml,*.xml
+autocmd BufNewFile,BufRead *.js,*.html,*.css,*.jinja,*.jinja2,*.yaml,*.yml,*.xml,*.prisma,*.ts
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set expandtab |
@@ -90,4 +100,20 @@ autocmd BufNewFile,BufRead *.js,*.html,*.css,*.jinja,*.jinja2,*.yaml,*.yml,*.xml
 let g:jsx_ext_required = 0
 
 let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue Prettier
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue Prettier
+
+" print spaces between brackets
+" Prettier default: true
+let g:prettier#config#bracket_spacing = 'true'
+
+autocmd BufNewFile,BufRead *.prisma set syntax=graphql
+
+" Trigger configuration (Optional)
+"let g:UltiSnipsExpandTrigger="<C-l>"
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+" let g:UltiSnipsEditSplit="vertical"
