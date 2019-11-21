@@ -7,15 +7,16 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'vim-scripts/Relaxed-Green'
-Plug 'kien/ctrlp.vim'
 Plug 'crusoexia/vim-monokai'
 Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/base16-vim'
 Plug 'jnurmine/Zenburn'
+
+"Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
-Plug 'wincent/command-t'
-Plug 'tpope/vim-fugitive'
+"Plug 'wincent/command-t'
+"Plug 'tpope/vim-fugitive'
 Plug 'chr4/nginx.vim'
 
 " Python
@@ -37,10 +38,10 @@ Plug 'jparise/vim-graphql'
 " Plug 'elzr/vim-json'
 
 " Auto pretty code: https://github.com/prettier/vim-prettier                                                                                         
-Plug 'prettier/vim-prettier'
-
-" Ultisnips
-Plug 'SirVer/ultisnips'
+" Plug 'prettier/vim-prettier'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 " React code snippets
 Plug 'epilande/vim-react-snippets'
@@ -69,6 +70,10 @@ colorscheme monokai
 " colorscheme solarized
 "colorscheme relaxedgreen
 
+" fix colors in tmux
+set background=dark
+set t_Co=256
+
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
 
@@ -79,6 +84,7 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 map <C-n> :NERDTreeToggle<CR>
 
 let NERDTreeIgnore = ['\.pyc$']
+let g:NERDTreeNodeDelimiter = "\u00a0"
 
 " Python
 autocmd BufNewFile,BufRead *.py,*.hbs,*.md
@@ -107,13 +113,3 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 let g:prettier#config#bracket_spacing = 'true'
 
 autocmd BufNewFile,BufRead *.prisma set syntax=graphql
-
-" Trigger configuration (Optional)
-"let g:UltiSnipsExpandTrigger="<C-l>"
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-b>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-" let g:UltiSnipsEditSplit="vertical"
